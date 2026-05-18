@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>王小明 • AI 工程師 Portfolio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef4ff;
+      --surface: rgba(255, 255, 255, 0.82);
+      --surface-strong: rgba(255, 255, 255, 0.96);
+      --border: rgba(255, 255, 255, 0.55);
+      --text: #1d2739;
+      --muted: #64748b;
+      --primary: #4f7dff;
+      --accent: #84c9ff;
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+      --radius: 28px;
+      --radius-sm: 18px;
+      --max-width: 1180px;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, rgba(130, 168, 255, 0.24), transparent 24%),
+                  linear-gradient(180deg, #f9fbff 0%, #edf3ff 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page-shell {
+      position: relative;
+      padding: 24px 20px 40px;
+      margin: 0 auto;
+      max-width: var(--max-width);
+    }
+
+    .toc {
+      position: sticky;
+      top: 24px;
+      align-self: flex-start;
+      width: 100%;
+      max-width: 260px;
+      padding: 18px 18px 16px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(24px);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      box-sizing: border-box;
+    }
+
+    .toc h2 {
+      margin: 0 0 14px;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #475569;
+    }
+
+    .toc nav {
+      display: grid;
+      gap: 10px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 10px 14px;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 16px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .toc a:hover,
+    .toc a:focus-visible {
+      background: rgba(79, 125, 255, 0.14);
+      transform: translateX(3px);
+    }
+
+    .content-grid {
+      display: grid;
+      gap: 28px;
+      grid-template-columns: 1fr;
+    }
+
+    .section {
+      padding: 28px;
+      border-radius: var(--radius);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(28px);
+    }
+
+    .section + .section {
+      margin-top: 12px;
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: clamp(1.4rem, 1.9vw, 2rem);
+      letter-spacing: -0.03em;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: minmax(220px, 320px) 1fr;
+      align-items: center;
+    }
+
+    .hero-card {
+      display: grid;
+      place-items: center;
+      padding: 28px 22px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.7));
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: 0 18px 60px rgba(34, 69, 146, 0.12);
+    }
+
+    .hero-avatar {
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dbe6ff, #eef5ff);
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.85);
+      overflow: hidden;
+      margin: 0 auto 14px;
+    }
+
+    .hero-avatar span {
+      font-size: 2.5rem;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(2rem, 3.2vw, 3rem);
+    }
+
+    .hero-lead {
+      margin: 12px 0 18px;
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 36rem;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(79, 125, 255, 0.13);
+      color: #214dff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid rgba(79, 125, 255, 0.18);
+    }
+
+    .about-grid,
+    .skills-grid,
+    .timeline-list {
+      display: grid;
+      gap: 24px;
+    }
+
+    .about-body {
+      display: grid;
+      gap: 16px;
+      color: #2b3750;
+    }
+
+    .about-meta {
+      display: grid;
+      gap: 12px;
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid rgba(255,255,255,0.72);
+    }
+
+    .meta-item {
+      display: grid;
+      gap: 6px;
+    }
+
+    .meta-title {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #53617a;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      margin: 0;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .skill-group {
+      padding: 20px;
+      border-radius: 26px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3);
+    }
+
+    .skill-group h3 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: #334155;
+    }
+
+    .skill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(79, 125, 255, 0.16);
+      color: #1f2937;
+      font-size: 0.92rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 28px;
+      border-left: 2px solid rgba(79, 125, 255, 0.2);
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 6px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border: 3px solid rgba(79, 125, 255, 0.86);
+      border-radius: 50%;
+    }
+
+    .timeline-label {
+      margin: 0 0 4px;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .timeline-meta {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .timeline-desc {
+      margin: 0;
+      color: #324055;
+    }
+
+    .highlight {
+      color: #214dff;
+      font-weight: 700;
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .award-card,
+    .project-card {
+      padding: 22px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255,255,255,0.75);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 45px rgba(47, 71, 114, 0.08);
+    }
+
+    .award-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .card-title {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+
+    .card-meta,
+    .project-type {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .card-copy {
+      margin: 0;
+      color: #3a4664;
+      line-height: 1.7;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(79,125,255,0.22);
+      background: rgba(79, 125, 255, 0.12);
+      color: #16356e;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .contact-button:hover,
+    .contact-button:focus-visible {
+      transform: translateY(-1px);
+      background: rgba(79, 125, 255, 0.18);
+    }
+
+    .section-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: var(--primary);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .section-meta span {
+      display: inline-flex;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4f7dff;
+    }
+
+    @media (max-width: 900px) {
+      .page-shell {
+        padding: 20px 16px 36px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+        max-width: none;
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        padding: 16px 14px 28px;
+      }
+
+      .hero-card {
+        padding: 24px 18px;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .toc {
+        padding: 16px 16px 14px;
+      }
+
+      .toc nav {
+        gap: 8px;
+      }
+
+      .section {
+        padding: 20px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <div class="content-grid">
+      <aside class="toc" aria-label="頁面導覽">
+        <h2>目錄</h2>
+        <nav>
+          <a href="#hero">Hero</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#experience">Experience</a>
+          <a href="#awards">Awards</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </aside>
+
+      <section id="hero" class="section">
+        <div class="hero-grid">
+          <div class="hero-card">
+            <div class="hero-avatar" aria-hidden="true"><span>王</span></div>
+            <h1 class="hero-title">王小明</h1>
+            <p class="hero-lead">致力於將AI模型與金融科技結合，打造具商業價值的問題解決方案。</p>
+            <div class="pills">
+              <span class="pill">AI 工程師</span>
+              <span class="pill">FinTech</span>
+              <span class="pill">顧問業</span>
+              <span class="pill">科技業</span>
+            </div>
+          </div>
+          <div class="about-body">
+            <div>
+              <p>我是一名資管系畢業的學生，熱衷於數據分析、機器學習與系統化思考。在校期間參與多項跨域專案，將技術能力與商業需求結合，持續優化用戶流程。</p>
+              <p>我擅長將複雜問題拆解成可實作模組，並在 FastAPI、Python、ML 模型部署的流程中，建立可重複使用的架構與文件。</p>
+              <p>期望投入具影響力的團隊，專注 FinTech / 顧問 / 科技業的 AI 工程職務，與團隊一起打造更智慧的企業服務。</p>
+            </div>
+            <div class="about-meta">
+              <div class="meta-item">
+                <p class="meta-title">求職方向</p>
+                <p class="meta-value">AI 工程師 / FinTech / 顧問 / 科技</p>
+              </div>
+              <div class="meta-item">
+                <p class="meta-title">所在地</p>
+                <p class="meta-value">台灣 · 中壢</p>
+              </div>
+              <div class="meta-item">
+                <p class="meta-title">語言</p>
+                <p class="meta-value">中文（母語） / 英文（中高）</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="section-meta"><span></span>核心技能</div>
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3>程式語言與框架</h3>
+            <div class="skill-cloud">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">JavaScript</span>
+              <span class="skill-chip">SQL</span>
+              <span class="skill-chip">FastAPI</span>
+              <span class="skill-chip">Flask</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>AI / 機器學習</h3>
+            <div class="skill-cloud">
+              <span class="skill-chip">PyTorch</span>
+              <span class="skill-chip">TensorFlow</span>
+              <span class="skill-chip">LLM Prompting</span>
+              <span class="skill-chip">模型微調</span>
+              <span class="skill-chip">特徵工程</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>資料與雲端</h3>
+            <div class="skill-cloud">
+              <span class="skill-chip">Pandas</span>
+              <span class="skill-chip">AWS</span>
+              <span class="skill-chip">GCP</span>
+              <span class="skill-chip">Docker</span>
+              <span class="skill-chip">Git</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="section">
+        <div class="section-meta"><span></span>學歷一覽</div>
+        <h2>Education</h2>
+        <div class="timeline-list">
+          <article class="timeline-item">
+            <h3 class="timeline-label">中原大學</h3>
+            <p class="timeline-meta">資訊管理學系 · 2021 - 2025</p>
+            <p class="timeline-desc">專注資料分析與商業應用，完成多次團隊專案，包含智慧客服與財務風控原型。</p>
+          </article>
+          <article class="timeline-item">
+            <h3 class="timeline-label">跨領域實作</h3>
+            <p class="timeline-meta">校內專題 · 2023</p>
+            <p class="timeline-desc">整合 NLP 與數據儀表板，協助專案呈現使用者行為分析報表。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="section-meta"><span></span>經歷一覽</div>
+        <h2>Experience</h2>
+        <div class="timeline-list">
+          <article class="timeline-item">
+            <h3 class="timeline-label">AI 工程實習生</h3>
+            <p class="timeline-meta">XYZ FinTech / 2024.07 - 2024.12</p>
+            <p class="timeline-desc">協助開發自動化風控模型，降低假陽性率 18%，並搭建模型監控面板提升團隊決策效率。</p>
+          </article>
+          <article class="timeline-item">
+            <h3 class="timeline-label">資料分析專案助理</h3>
+            <p class="timeline-meta">中原大學 / 2023.09 - 2024.06</p>
+            <p class="timeline-desc">負責資料處理與可視化儀表板，將報告交付速度縮短 30%，協助教授快速驗證研究假設。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="awards" class="section">
+        <div class="section-meta"><span></span>競賽與榮耀</div>
+        <h2>Awards</h2>
+        <div class="card-grid">
+          <article class="award-card">
+            <div class="award-badge">🏅 校園 AI 挑戰賽 冠軍</div>
+            <h3 class="card-title">2024 校園 AI 挑戰賽</h3>
+            <p class="card-meta">團隊專題：金融風險預測服務</p>
+            <p class="card-copy">以機器學習模型預測異常交易，最終方案在準確率與解釋性間取得平衡。</p>
+          </article>
+          <article class="award-card">
+            <div class="award-badge">🥈 全國資料創新獎</div>
+            <h3 class="card-title">2023 全國資料創新競賽</h3>
+            <p class="card-meta">獲選銀獎作品</p>
+            <p class="card-copy">開發智能問答系統，提升查詢效率並支援即時語意搜尋。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-meta"><span></span>作品集</div>
+        <h2>Projects</h2>
+        <div class="card-grid">
+          <article class="project-card">
+            <h3 class="card-title">智慧客服情緒分析平台</h3>
+            <p class="project-type">AI / FinTech</p>
+            <p class="card-copy">建置情緒分類模型並串接客服回覆系統，協助企業降低客訴處理時間。</p>
+          </article>
+          <article class="project-card">
+            <h3 class="card-title">金融交易異常偵測儀表板</h3>
+            <p class="project-type">資料視覺化 / 風控</p>
+            <p class="card-copy">整合多種指標與自動化報表，將異常事件通知時間縮短 40%。</p>
+          </article>
+          <article class="project-card">
+            <h3 class="card-title">Prompt 設計與模型微調</h3>
+            <p class="project-type">LLM / 模型部署</p>
+            <p class="card-copy">建立可重複使用的 prompt workflow，將文本生成品質提升至企業級標準。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="section-meta"><span></span>聯絡我</div>
+        <h2>Contact</h2>
+        <div class="contact-grid">
+          <a class="contact-button" href="mailto:hello@example.com">✉️ Email</a>
+          <a class="contact-button" href="https://github.com/" target="_blank" rel="noreferrer">🐙 GitHub</a>
+          <a class="contact-button" href="https://linkedin.com/" target="_blank" rel="noreferrer">💼 LinkedIn</a>
+          <a class="contact-button" href="https://instagram.com/" target="_blank" rel="noreferrer">📸 IG</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
