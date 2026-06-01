@@ -3,463 +3,259 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>王小明 • AI 工程師 Portfolio</title>
+  <title>張庭瑀11344116</title>
   <style>
     :root {
-      color-scheme: light;
-      --bg: #eef4ff;
+      --bg-1: rgba(55, 85, 255, 0.18);
+      --bg-2: rgba(198, 95, 180, 0.12);
       --surface: rgba(255, 255, 255, 0.82);
       --surface-strong: rgba(255, 255, 255, 0.96);
-      --border: rgba(255, 255, 255, 0.55);
-      --text: #1d2739;
-      --muted: #64748b;
-      --primary: #4f7dff;
-      --accent: #84c9ff;
-      --shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+      --card-border: rgba(255, 255, 255, 0.35);
+      --text: #0f1724;
+      --muted: #5b6b80;
+      --primary: #3f6bff;
+      --chip-border: rgba(63, 107, 255, 0.14);
+      --glow: rgba(79, 125, 255, 0.18);
       --radius: 28px;
-      --radius-sm: 18px;
       --max-width: 1180px;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "SF Pro Text", Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
+    /* Background soft twin radial gradients with very slow drift */
     body {
       margin: 0;
       min-height: 100vh;
-      background: radial-gradient(circle at top, rgba(130, 168, 255, 0.24), transparent 24%),
-                  linear-gradient(180deg, #f9fbff 0%, #edf3ff 100%);
       color: var(--text);
       line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .page-shell {
+      background: linear-gradient(180deg, rgba(250,251,255,1) 0%, rgba(243,246,255,1) 100%);
       position: relative;
-      padding: 24px 20px 40px;
-      margin: 0 auto;
-      max-width: var(--max-width);
+      overflow-x: hidden;
     }
 
-    .toc {
-      position: sticky;
-      top: 24px;
-      align-self: flex-start;
-      width: 100%;
-      max-width: 260px;
-      padding: 18px 18px 16px;
-      margin-bottom: 24px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.68);
-      backdrop-filter: blur(24px);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      box-sizing: border-box;
-    }
-
-    .toc h2 {
-      margin: 0 0 14px;
-      font-size: 0.95rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #475569;
-    }
-
-    .toc nav {
-      display: grid;
-      gap: 10px;
-    }
-
-    .toc a {
-      display: block;
-      padding: 10px 14px;
-      color: var(--text);
-      text-decoration: none;
-      border-radius: 16px;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .toc a:hover,
-    .toc a:focus-visible {
-      background: rgba(79, 125, 255, 0.14);
-      transform: translateX(3px);
-    }
-
-    .content-grid {
-      display: grid;
-      gap: 28px;
-      grid-template-columns: 1fr;
-    }
-
-    .section {
-      padding: 28px;
-      border-radius: var(--radius);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(28px);
-    }
-
-    .section + .section {
-      margin-top: 12px;
-    }
-
-    .section h2 {
-      margin: 0 0 16px;
-      font-size: clamp(1.4rem, 1.9vw, 2rem);
-      letter-spacing: -0.03em;
-    }
-
-    .hero-grid {
-      display: grid;
-      gap: 24px;
-      grid-template-columns: minmax(220px, 320px) 1fr;
-      align-items: center;
-    }
-
-    .hero-card {
-      display: grid;
-      place-items: center;
-      padding: 28px 22px;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.7));
-      border-radius: 32px;
-      border: 1px solid rgba(255,255,255,0.7);
-      box-shadow: 0 18px 60px rgba(34, 69, 146, 0.12);
-    }
-
-    .hero-avatar {
-      width: 148px;
-      height: 148px;
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      left: 50%;
+      top: 20%;
+      width: 900px;
+      height: 900px;
+      transform: translate(-50%, -20%);
       border-radius: 50%;
-      background: linear-gradient(135deg, #dbe6ff, #eef5ff);
-      display: grid;
-      place-items: center;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.85);
-      overflow: hidden;
-      margin: 0 auto 14px;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      mix-blend-mode: screen;
+      opacity: 0.9;
     }
 
-    .hero-avatar span {
-      font-size: 2.5rem;
+    body::before {
+      background: radial-gradient(circle at 30% 30%, rgba(24, 58, 170, 0.85), transparent 40%);
+      animation: drift1 18s linear infinite alternate;
     }
 
-    .hero-title {
-      margin: 0;
-      font-size: clamp(2rem, 3.2vw, 3rem);
+    body::after {
+      top: 75%;
+      left: 20%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle at 70% 70%, rgba(196, 93, 173, 0.72), transparent 38%);
+      animation: drift2 22s linear infinite alternate-reverse;
+      opacity: 0.85;
     }
 
-    .hero-lead {
-      margin: 12px 0 18px;
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 36rem;
+    @keyframes drift1 {
+      from { transform: translate(-52%, -18%) scale(1); }
+      to   { transform: translate(-48%, -22%) scale(1.03); }
     }
 
-    .pills {
+    @keyframes drift2 {
+      from { transform: translate(-22%, -78%) scale(1); }
+      to   { transform: translate(-18%, -72%) scale(1.04); }
+    }
+
+    img { max-width: 100%; display: block; }
+
+    .page-shell { position: relative; z-index: 2; padding: 28px 22px 48px; margin: 0 auto; max-width: var(--max-width); }
+
+    /* Glass TOC */
+    .toc {
+      position: sticky; top: 28px; align-self: flex-start; width: 100%; max-width: 280px;
+      padding: 18px; margin-bottom: 24px; border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.66), rgba(255,255,255,0.52));
+      border: 1px solid var(--card-border); backdrop-filter: blur(24px); box-shadow: 0 10px 30px rgba(24,34,80,0.08);
+    }
+
+    .toc h2 { margin: 0 0 12px; font-size: 0.95rem; color: #475569; letter-spacing: 0.08em; text-transform: uppercase; }
+    .toc nav { display: grid; gap: 10px; }
+    .toc a { display:block; padding: 10px 14px; color: var(--text); text-decoration:none; border-radius:12px; transition: transform .18s ease, background .18s ease; }
+    .toc a:hover, .toc a:focus-visible { background: rgba(63,107,255,0.08); transform: translateX(4px); box-shadow: 0 6px 20px rgba(63,107,255,0.06); }
+
+    .top-toc {
+      position: sticky;
+      top: 0;
+      z-index: 20;
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
+      overflow-x: auto;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,255,255,0.64));
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 999px;
+      backdrop-filter: blur(24px);
+      box-shadow: 0 12px 30px rgba(24,34,80,0.08);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
 
-    .pill {
+    .top-toc::-webkit-scrollbar { display: none; }
+    .top-toc a {
+      flex: 0 0 auto;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(79, 125, 255, 0.13);
-      color: #214dff;
-      font-weight: 600;
-      font-size: 0.95rem;
-      border: 1px solid rgba(79, 125, 255, 0.18);
-    }
-
-    .about-grid,
-    .skills-grid,
-    .timeline-list {
-      display: grid;
-      gap: 24px;
-    }
-
-    .about-body {
-      display: grid;
-      gap: 16px;
-      color: #2b3750;
-    }
-
-    .about-meta {
-      display: grid;
-      gap: 12px;
-      padding: 22px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.84);
-      border: 1px solid rgba(255,255,255,0.72);
-    }
-
-    .meta-item {
-      display: grid;
-      gap: 6px;
-    }
-
-    .meta-title {
-      margin: 0;
-      font-size: 0.95rem;
-      color: #53617a;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .meta-value {
-      margin: 0;
-      font-weight: 700;
       color: var(--text);
-    }
-
-    .skill-group {
-      padding: 20px;
-      border-radius: 26px;
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(255,255,255,0.7);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3);
-    }
-
-    .skill-group h3 {
-      margin: 0 0 12px;
-      font-size: 1rem;
-      color: #334155;
-    }
-
-    .skill-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill-chip {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(79, 125, 255, 0.16);
-      color: #1f2937;
-      font-size: 0.92rem;
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 28px;
-      border-left: 2px solid rgba(79, 125, 255, 0.2);
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -10px;
-      top: 6px;
-      width: 18px;
-      height: 18px;
-      background: #fff;
-      border: 3px solid rgba(79, 125, 255, 0.86);
-      border-radius: 50%;
-    }
-
-    .timeline-label {
-      margin: 0 0 4px;
-      font-size: 1.05rem;
-      font-weight: 700;
-    }
-
-    .timeline-meta {
-      margin: 0 0 10px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .timeline-desc {
-      margin: 0;
-      color: #324055;
-    }
-
-    .highlight {
-      color: #214dff;
-      font-weight: 700;
-    }
-
-    .card-grid {
-      display: grid;
-      gap: 18px;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
-
-    .award-card,
-    .project-card {
-      padding: 22px;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(255,255,255,0.75);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 20px 45px rgba(47, 71, 114, 0.08);
-    }
-
-    .award-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
-      font-size: 0.98rem;
-      font-weight: 700;
-    }
-
-    .card-title {
-      margin: 0 0 10px;
-      font-size: 1.1rem;
-    }
-
-    .card-meta,
-    .project-type {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .card-copy {
-      margin: 0;
-      color: #3a4664;
-      line-height: 1.7;
-    }
-
-    .contact-grid {
-      display: grid;
-      gap: 14px;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .contact-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 16px 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(79,125,255,0.22);
-      background: rgba(79, 125, 255, 0.12);
-      color: #16356e;
       text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.2s ease, background 0.2s ease;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(63,107,255,0.12);
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+      white-space: nowrap;
     }
 
-    .contact-button:hover,
-    .contact-button:focus-visible {
-      transform: translateY(-1px);
-      background: rgba(79, 125, 255, 0.18);
+    .top-toc a:hover, .top-toc a:focus-visible {
+      background: rgba(255,255,255,0.95);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(63,107,255,0.12);
     }
 
-    .section-meta {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-      color: var(--primary);
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+    .content-grid { display: grid; gap: 28px; grid-template-columns: 1fr; }
+
+    /* Glass card base */
+    .section {
+      position: relative; padding: 28px; border-radius: var(--radius);
+      background: var(--surface); border: 1px solid var(--card-border);
+      box-shadow: 0 18px 50px rgba(33,44,85,0.06);
+      backdrop-filter: blur(24px);
+      transition: transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .22s ease, box-shadow-color .22s ease;
+      z-index: 1;
     }
 
-    .section-meta span {
-      display: inline-flex;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #4f7dff;
+    /* hover lift with soft glow */
+    .section:hover, .section:focus-within {
+      transform: translateY(-6px) scale(1.005);
+      box-shadow: 0 30px 90px rgba(33,44,85,0.12), 0 0 40px var(--glow);
     }
+
+    .section + .section { margin-top: 12px; }
+    .section h2 { margin:0 0 16px; font-size: clamp(1.4rem, 1.9vw, 2rem); letter-spacing: -0.02em; }
+
+    .hero-grid { display:grid; gap:24px; grid-template-columns: minmax(220px,320px) 1fr; align-items:center; }
+
+    .hero-card {
+      display:grid; place-items:center; padding:28px 22px; text-align:center; border-radius:28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.78));
+      border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 18px 50px rgba(34,69,146,0.06);
+      backdrop-filter: blur(20px);
+    }
+
+    .hero-avatar { width:148px; height:148px; border-radius:50%; background: linear-gradient(135deg,#e6f0ff,#f7fbff); display:grid; place-items:center; overflow:hidden; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.85); margin:0 auto 14px; }
+    .hero-avatar span { font-size:2.5rem; color:var(--text); }
+    .hero-title { margin:0; font-size: clamp(2rem,3.2vw,3rem); color:var(--text); }
+    .hero-lead { margin:12px 0 18px; color:var(--muted); font-size:1rem; max-width:36rem; }
+
+    /* Pills / tag cloud styling */
+    .pills { display:flex; flex-wrap:wrap; gap:10px; }
+    .pill { display:inline-flex; align-items:center; justify-content:center; padding:10px 16px; border-radius:999px;
+      background: rgba(255,255,255,0.64); color: #16356e; font-weight:700; font-size:0.95rem; border:1px solid var(--chip-border);
+      box-shadow: 0 6px 18px rgba(63,107,255,0.04);
+    }
+
+    .about-body { display:grid; gap:16px; color:#142433; }
+
+    .about-meta { display:grid; gap:12px; padding:22px; border-radius:20px; background: rgba(255,255,255,0.78); border:1px solid rgba(255,255,255,0.64); }
+
+    .meta-title { margin:0; font-size:0.95rem; color:#506078; letter-spacing:0.04em; text-transform:uppercase; }
+    .meta-value { margin:0; font-weight:700; color:var(--text); }
+
+    .skill-group { padding:20px; border-radius:22px; background: rgba(255,255,255,0.82); border:1px solid rgba(255,255,255,0.6); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22); }
+    .skill-group h3 { margin:0 0 12px; font-size:1rem; color:#334155; }
+    .skill-cloud { display:flex; flex-wrap:wrap; gap:10px; }
+
+    .skill-chip { padding:10px 14px; border-radius:999px; background: rgba(255,255,255,0.62); border:1px solid var(--chip-border); color:#0f1724; font-size:0.92rem; font-weight:600; }
+
+    /* Timeline with vertical axis and glowing node */
+    .timeline-list { display:grid; gap:18px; }
+    .timeline-item { position: relative; padding-left: 38px; }
+    .timeline-item::after { content: ""; position:absolute; left: 9px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, rgba(79,125,255,0.14), rgba(196,93,173,0.06)); border-radius:2px; }
+    .timeline-item::before { content:""; position:absolute; left: -4px; top: 6px; width:18px; height:18px; background:linear-gradient(180deg,#fff,#f6fbff); border:3px solid rgba(63,107,255,0.92); border-radius:50%; box-shadow: 0 0 18px rgba(79,125,255,0.18), 0 6px 20px rgba(33,44,85,0.06); }
+
+    .timeline-label { margin:0 0 4px; font-size:1.05rem; font-weight:700; }
+    .timeline-meta { margin:0 0 10px; color:var(--muted); font-size:0.95rem; }
+    .timeline-list-items { margin: 0; padding-left: 20px; color: #324055; }
+    .timeline-list-items li { margin-bottom: 10px; }
+    .timeline-desc { margin:0; color:#263248; }
+
+    .card-grid { display:grid; gap:18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .award-card, .project-card {
+      padding:22px; border-radius:24px; background: rgba(255,255,255,0.86); border:1px solid rgba(255,255,255,0.7); backdrop-filter: blur(20px);
+      box-shadow: 0 20px 45px rgba(47,71,114,0.06);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .award-card:hover, .project-card:hover { transform: translateY(-6px); box-shadow: 0 30px 80px rgba(47,71,114,0.10), 0 0 40px var(--glow); }
+
+    .award-badge { display:inline-flex; align-items:center; gap:8px; margin-bottom:16px; font-size:0.98rem; font-weight:700; }
+    .card-title { margin:0 0 10px; font-size:1.1rem; }
+    .card-meta, .project-type { margin:0 0 12px; color:var(--muted); font-size:0.95rem; }
+    .card-copy { margin:0; color:#2c3b56; line-height:1.7; }
+
+    .contact-grid { display:grid; gap:14px; grid-template-columns: repeat(4, minmax(0,1fr)); }
+    .contact-button { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:16px 18px; border-radius:18px; border:1px solid rgba(63,107,255,0.22); background: rgba(255,255,255,0.64); color:#16356e; text-decoration:none; font-weight:700; transition: transform .18s ease, background .18s ease; }
+    .contact-button:hover, .contact-button:focus-visible { transform: translateY(-2px); background: rgba(63,107,255,0.12); box-shadow: 0 12px 30px rgba(63,107,255,0.06); }
+
+    .section-meta { display:inline-flex; align-items:center; gap:12px; margin-bottom:18px; color:var(--primary); font-size:0.95rem; font-weight:700; letter-spacing:0.04em; }
+    .section-meta span { display:inline-flex; width:10px; height:10px; border-radius:50%; background:var(--primary); }
 
     @media (max-width: 900px) {
-      .page-shell {
-        padding: 20px 16px 36px;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .content-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .toc {
-        position: static;
-        max-width: none;
-      }
-
-      .contact-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .page-shell { padding: 20px 16px 36px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .content-grid { grid-template-columns: 1fr; }
+      .toc { position: static; max-width: none; }
+      .contact-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
     }
 
     @media (max-width: 640px) {
-      .page-shell {
-        padding: 16px 14px 28px;
-      }
-
-      .hero-card {
-        padding: 24px 18px;
-      }
-
-      .hero-title {
-        font-size: 2.2rem;
-      }
-
-      .toc {
-        padding: 16px 16px 14px;
-      }
-
-      .toc nav {
-        gap: 8px;
-      }
-
-      .section {
-        padding: 20px;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
+      .page-shell { padding: 16px 14px 28px; }
+      .hero-card { padding: 24px 18px; }
+      .hero-title { font-size: 2.2rem; }
+      .toc { padding: 16px; }
+      .section { padding: 20px; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
-</head>
 <body>
   <main class="page-shell">
-    <div class="content-grid">
-      <aside class="toc" aria-label="頁面導覽">
-        <h2>目錄</h2>
-        <nav>
-          <a href="#hero">Hero</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#education">Education</a>
-          <a href="#experience">Experience</a>
-          <a href="#awards">Awards</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </aside>
-
+    <nav class="top-toc" aria-label="頁面頂部導覽">
+      <a href="#about">關於</a>
+      <a href="#skills">技能</a>
+      <a href="#education">學歷</a>
+      <a href="#experience">經歷</a>
+      <a href="#awards">獎項</a>
+      <a href="#projects">作品</a>
+      <a href="#contact">聯絡</a>
+    </nav>
       <section id="hero" class="section">
         <div class="hero-grid">
           <div class="hero-card">
-            <div class="hero-avatar" aria-hidden="true"><span>王</span></div>
-            <h1 class="hero-title">王小明</h1>
+            <div class="hero-avatar" aria-hidden="true"><span></span></div>
+            <h1 class="hero-title">張庭瑀</h1>
             <p class="hero-lead">致力於將AI模型與金融科技結合，打造具商業價值的問題解決方案。</p>
             <div class="pills">
               <span class="pill">AI 工程師</span>
@@ -470,10 +266,9 @@
           </div>
           <div class="about-body">
             <div>
-              <p>我是一名資管系畢業的學生，熱衷於數據分析、機器學習與系統化思考。在校期間參與多項跨域專案，將技術能力與商業需求結合，持續優化用戶流程。</p>
-              <p>我擅長將複雜問題拆解成可實作模組，並在 FastAPI、Python、ML 模型部署的流程中，建立可重複使用的架構與文件。</p>
-              <p>期望投入具影響力的團隊，專注 FinTech / 顧問 / 科技業的 AI 工程職務，與團隊一起打造更智慧的企業服務。</p>
-            </div>
+                <p>我是張庭瑀，中原資管在校生，應徵 AI 工程師。喜歡把抽象的 AI 概念變成能按、能看的東西——尤其是把模型接進 SwiftUI，那瞬間的 aha 感總讓我想再多做一個功能。做過 Memorize 與 Landmark 兩個 SwiftUI 小專案，也在校外當過志工，喜歡把技術帶到真實場景。</p>
+                <p>我相信 AI 最有意思的是當它成為開發者與使用者的擴充工具，而不是晦澀的分數追逐。想加入會把 AI 當作產品力工具的團隊：偏好能快速 Prototype、重視 spec‑driven coding、並把 ROCE prompt engineering 納入工作流程的行動或 AI 產品團隊。</p>
+              </div>
             <div class="about-meta">
               <div class="meta-item">
                 <p class="meta-title">求職方向</p>
@@ -497,33 +292,51 @@
         <h2>Skills</h2>
         <div class="skills-grid">
           <div class="skill-group">
-            <h3>程式語言與框架</h3>
+            <h3>💻 程式</h3>
             <div class="skill-cloud">
-              <span class="skill-chip">Python</span>
-              <span class="skill-chip">JavaScript</span>
-              <span class="skill-chip">SQL</span>
-              <span class="skill-chip">FastAPI</span>
-              <span class="skill-chip">Flask</span>
+              <span class="skill-chip">Swift (熟練)</span>
+              <span class="skill-chip">Python (熟練)</span>
+              <span class="skill-chip">SwiftUI (熟練)</span>
+              <span class="skill-chip">SQL (會用)</span>
+              <span class="skill-chip">FastAPI (會用)</span>
             </div>
           </div>
           <div class="skill-group">
-            <h3>AI / 機器學習</h3>
+            <h3>🤖 AI 協作工具</h3>
             <div class="skill-cloud">
-              <span class="skill-chip">PyTorch</span>
-              <span class="skill-chip">TensorFlow</span>
-              <span class="skill-chip">LLM Prompting</span>
-              <span class="skill-chip">模型微調</span>
-              <span class="skill-chip">特徵工程</span>
+              <span class="skill-chip">GitHub Copilot (熟練)</span>
+              <span class="skill-chip">ChatGPT (熟練)</span>
+              <span class="skill-chip">Gemini (會用)</span>
+              <span class="skill-chip">Claude (會用)</span>
             </div>
           </div>
           <div class="skill-group">
-            <h3>資料與雲端</h3>
+            <h3>📊 專案管理</h3>
             <div class="skill-cloud">
-              <span class="skill-chip">Pandas</span>
-              <span class="skill-chip">AWS</span>
-              <span class="skill-chip">GCP</span>
-              <span class="skill-chip">Docker</span>
-              <span class="skill-chip">Git</span>
+              <span class="skill-chip">GitHub 專案控管 (熟練)</span>
+              <span class="skill-chip">版本控制 Git (熟練)</span>
+              <span class="skill-chip">需求拆解 (熟練)</span>
+              <span class="skill-chip">快速 Prototype (會用)</span>
+              <span class="skill-chip">Notion 協作 (會用)</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>🏢 語言</h3>
+            <div class="skill-cloud">
+              <span class="skill-chip">中文（母語）</span>
+              <span class="skill-chip">英文（中高）</span>
+              <span class="skill-chip">客語（會用）</span>
+              <span class="skill-chip">技術英文閱讀 (熟練)</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>🌱 軟實力</h3>
+            <div class="skill-cloud">
+              <span class="skill-chip">自主學習 (熟練)</span>
+              <span class="skill-chip">校外服務志工 (熟練)</span>
+              <span class="skill-chip">跨領域協作 (會用)</span>
+              <span class="skill-chip">產品感 (會用)</span>
+              <span class="skill-chip">Spec driven coding (熟練)</span>
             </div>
           </div>
         </div>
@@ -535,12 +348,12 @@
         <div class="timeline-list">
           <article class="timeline-item">
             <h3 class="timeline-label">中原大學</h3>
-            <p class="timeline-meta">資訊管理學系 · 2021 - 2025</p>
+            <p class="timeline-meta">資訊管理學系 · 2024 - 2027</p>
             <p class="timeline-desc">專注資料分析與商業應用，完成多次團隊專案，包含智慧客服與財務風控原型。</p>
           </article>
           <article class="timeline-item">
             <h3 class="timeline-label">跨領域實作</h3>
-            <p class="timeline-meta">校內專題 · 2023</p>
+            <p class="timeline-meta">校內專題 · 2026</p>
             <p class="timeline-desc">整合 NLP 與數據儀表板，協助專案呈現使用者行為分析報表。</p>
           </article>
         </div>
@@ -552,13 +365,23 @@
         <div class="timeline-list">
           <article class="timeline-item">
             <h3 class="timeline-label">AI 工程實習生</h3>
-            <p class="timeline-meta">XYZ FinTech / 2024.07 - 2024.12</p>
-            <p class="timeline-desc">協助開發自動化風控模型，降低假陽性率 18%，並搭建模型監控面板提升團隊決策效率。</p>
+            <p class="timeline-meta">XYZ FinTech / 2026.07 - 2026.12</p>
+            <ul class="timeline-list-items">
+              <li>規劃自動化風控模型資料流程，處理 120K 筆交易紀錄。</li>
+              <li>建立模型監控面板，讓團隊每週檢視 5+ 個關鍵指標。</li>
+              <li>優化訓練參數，將假陽性率降低 18%。</li>
+              <li>協調 3 個部門需求，將上線時程縮短 2 週。</li>
+            </ul>
           </article>
           <article class="timeline-item">
             <h3 class="timeline-label">資料分析專案助理</h3>
-            <p class="timeline-meta">中原大學 / 2023.09 - 2024.06</p>
-            <p class="timeline-desc">負責資料處理與可視化儀表板，將報告交付速度縮短 30%，協助教授快速驗證研究假設。</p>
+            <p class="timeline-meta">中原大學 / 2024.09 - 2025.06</p>
+            <ul class="timeline-list-items">
+              <li>分析 50+ 萬筆使用者資料，提取 12 個行為向量。</li>
+              <li>建立可視化儀表板，讓研究團隊 2x 加快報告驗證。</li>
+              <li>自動化報表產出流程，將交付時間縮短 30%。</li>
+              <li>整理 8 份數據摘要，支持 4 個專題決策討論。</li>
+            </ul>
           </article>
         </div>
       </section>
@@ -575,7 +398,7 @@
           </article>
           <article class="award-card">
             <div class="award-badge">🥈 全國資料創新獎</div>
-            <h3 class="card-title">2023 全國資料創新競賽</h3>
+            <h3 class="card-title">2024 全國資料創新競賽</h3>
             <p class="card-meta">獲選銀獎作品</p>
             <p class="card-copy">開發智能問答系統，提升查詢效率並支援即時語意搜尋。</p>
           </article>
